@@ -20,6 +20,12 @@ name of the user to connect via ssh
 
 password of the user to connect via ssh
 
+### `SSH_PUBKEY=`
+
+Publickey to identify to service (disables password login)
+
+### `SSH_TIMEOUT=`
+Time when the tunnel will expire. Automatically if not used (Tunnel, not the container)
 
 ## Run ssh-tunneling
 
