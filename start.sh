@@ -10,6 +10,12 @@ echo "HostKey /ssh/ssh_host_rsa_key" >> /etc/ssh/sshd_config
 echo "PermitOpen ${SSH_PERMITOPEN}" >> /etc/ssh/sshd_config
 echo "AllowUsers ${SSH_USER}" >> /etc/ssh/sshd_config
 
+if [ "$SSH_PUBKEY" != "" ]; then
+	echo "AuthorizedKeysFile      /etc/ssh/authorized_keys" >> /etc/ssh/sshd_config
+	echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
+	echo "$SSH_PUBKEY" > /etc/ssh/authorized_keys
+fi
+
 ln -s -f /ssh/ssh_host_rsa_key /etc/ssh/ssh_host_rsa_key
 ln -s -f /ssh/ssh_host_rsa_key.pub /etc/ssh/ssh_host_rsa_key.pub
 
